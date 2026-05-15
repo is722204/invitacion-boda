@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lupita &amp; Daniel</title>
+  <script>
+    // GitHub Pages SPA redirect trick
+    // Guarda la ruta en sessionStorage y redirige a index.html
+    var l = window.location;
+    sessionStorage.redirect = l.pathname + l.search + l.hash;
+    l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/');
+  </script>
+</head>
+<body></body>
+</html>
