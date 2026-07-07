@@ -4,14 +4,11 @@
   <meta charset="utf-8">
   <title>Lupita &amp; Daniel</title>
   <script>
-    // GitHub Pages SPA redirect: preserva la ruta completa incluyendo el subfolder
+    // GitHub Pages SPA redirect: el sitio vive en la raíz de un dominio propio (CNAME),
+    // así que solo guardamos la ruta completa y mandamos todo a "/".
     var l = window.location;
-    var pathParts = l.pathname.split('/');
-    // El primer segmento es el repo (ej: /invitacion-boda), mantenemos base
-    var base = '/' + pathParts[1];
-    var rest = pathParts.slice(2).join('/');
-    sessionStorage.redirect = (rest ? '/' + rest : '/') + l.search + l.hash;
-    l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + base + '/');
+    sessionStorage.redirect = l.pathname + l.search + l.hash;
+    l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/');
   </script>
 </head>
 <body></body>
