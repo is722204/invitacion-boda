@@ -4,11 +4,14 @@
   <meta charset="utf-8">
   <title>Lupita &amp; Daniel</title>
   <script>
-    // GitHub Pages SPA redirect trick
-    // Guarda la ruta en sessionStorage y redirige a index.html
+    // GitHub Pages SPA redirect: preserva la ruta completa incluyendo el subfolder
     var l = window.location;
-    sessionStorage.redirect = l.pathname + l.search + l.hash;
-    l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/');
+    var pathParts = l.pathname.split('/');
+    // El primer segmento es el repo (ej: /invitacion-boda), mantenemos base
+    var base = '/' + pathParts[1];
+    var rest = pathParts.slice(2).join('/');
+    sessionStorage.redirect = (rest ? '/' + rest : '/') + l.search + l.hash;
+    l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + base + '/');
   </script>
 </head>
 <body></body>
